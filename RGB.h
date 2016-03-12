@@ -13,8 +13,8 @@ class RGB : public Actor {
   unsigned char currentValue[];
   unsigned char targetValue[];
   public:
-    RGB(const char* name, const unsigned char red, const unsigned char blue, const unsigned char green, Stream& stream) : Actor(name, stream), redPin(red), greenPin(green), bluePin(blue) {};
-    virtual void printStatus();
+    RGB(const char* name, const unsigned char red, const unsigned char blue, const unsigned char green) : Actor(name), redPin(red), greenPin(green), bluePin(blue) {};
+    virtual void printStatus(Stream& stream);
     virtual void setCommand(const char* const command);
     virtual void execute();
 };

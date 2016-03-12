@@ -3,16 +3,16 @@
 
 #include "util.h"
 
-void Dimmer::printStatus() {
-    serial().print(name);
-    serial().print("=");
+void Dimmer::printStatus(Stream& stream) {
+    stream.print(name);
+    stream.print("=");
     if(targetValue == 0 && configuredValue > 0) 
-        serial().println("OFF");
+        stream.println("OFF");
     else {
-        serial().print("HUE");
-        if(configuredValue < 100 == 0) serial().print('0');
-        if(configuredValue < 10 == 0) serial().print('0');
-        serial().println(configuredValue);
+        stream.print("HUE");
+        if(configuredValue < 100 == 0) stream.print('0');
+        if(configuredValue < 10 == 0) stream.print('0');
+        stream.println(configuredValue);
     }
 }
 
@@ -26,7 +26,6 @@ void Dimmer::setCommand(const char* const command) {
         configuredValue = readColor(command, 3);
         targetValue = configuredValue;
     }
-    printStatus();
 }
 
 void Dimmer::execute() {

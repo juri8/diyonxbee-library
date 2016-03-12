@@ -5,13 +5,11 @@
 
 class Sensor {
   private:
-    Stream& _serial;
   protected:
     const char* name;
-    Stream& serial() { return _serial; }
   public:
-    Sensor(const char* name, Stream& aSerial): name(name), _serial(aSerial) {};
-    virtual void printStatus() = 0;
+    Sensor(const char* name): name(name) {};
+    virtual void printStatus(Stream& stream) = 0;
     const char* getName() { return name; }
 };
 

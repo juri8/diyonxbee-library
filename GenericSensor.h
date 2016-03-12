@@ -6,8 +6,8 @@
 class GenericSensor : public PeriodicSensor {
   private:
     void (*function)(Stream& stream);
-    virtual void printValue() { function(serial()); }
+    virtual void printValue(Stream& stream) { function(stream); }
   public:
-    GenericSensor(const char* name, const int queryInterval, void (*function)(Stream& stream), Stream& stream) : PeriodicSensor(name, queryInterval, stream), function(function) {}
+    GenericSensor(const char* name, const int queryInterval, void (*function)(Stream& stream)) : PeriodicSensor(name, queryInterval), function(function) {}
 };
 #endif

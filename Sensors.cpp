@@ -6,7 +6,7 @@ const int MAX_ITEM = 32;
 void Sensors::sendUpdates() {
     const int numberSensors = sizeof(sensors) / sizeof(Sensor*);
     for(int i = 0; i < numberSensors; i++) {
-        sensors[i]->printStatus();
+        sensors[i]->printStatus(stream);
     }
 }
 
@@ -15,6 +15,7 @@ void Sensors::processCommand(const char* const item, const char* const command) 
     for(int i = 0; i < count; i++) {
         if(strncmp(item, actors[i]->getName(), MAX_ITEM) == 0) {
             actors[i]->setCommand(command);
+            actors[i]->printStatus(stream);
         }
     }
 }

@@ -3,14 +3,14 @@
 
 #include "util.h"
 
-void RGB::printStatus() {
-    serial().print(name);
-    serial().print("=");
+void RGB::printStatus(Stream& stream) {
+    stream.print(name);
+    stream.print("=");
     if(targetValue[0] == 0 && configuredValue[0] > 0) 
-        serial().println("OFF");
+        stream.println("OFF");
     else {
-        serial().print("RGB");
-        printByte(serial(), configuredValue[0]);
+        stream.print("RGB");
+        printByte(stream, configuredValue[0]);
     }
 }
 
@@ -36,7 +36,6 @@ void RGB::setCommand(const char* const command) {
         targetValue[1] = configuredValue[1];
         targetValue[2] = configuredValue[2];
     }
-    printStatus();
 }
 
 unsigned char factor(unsigned char delta0, unsigned char delta1, unsigned char delta2) {

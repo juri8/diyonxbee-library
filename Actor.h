@@ -5,7 +5,7 @@
 
 class Actor : public Sensor {
   public:
-    Actor(const char* name, Stream& aSerial): Sensor(name, aSerial) {}
+    Actor(const char* name): Sensor(name) {}
     virtual void setCommand(const char* const command) = 0;
     virtual void execute() = 0;
 };

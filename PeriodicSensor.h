@@ -5,13 +5,13 @@
 
 class PeriodicSensor : public Sensor {
   private:
-    virtual void printValue() = 0;
+    virtual void printValue(Stream& stream) = 0;
     unsigned long lastUpdate = 0;
   protected:
     const int queryInterval;
-    PeriodicSensor(const char* name, const int queryInterval, Stream& stream) : Sensor(name, stream), queryInterval(queryInterval) {}
+    PeriodicSensor(const char* name, const int queryInterval) : Sensor(name), queryInterval(queryInterval) {}
   public:
-    virtual void printStatus();
+    virtual void printStatus(Stream& stream);
 };
 
 #endif

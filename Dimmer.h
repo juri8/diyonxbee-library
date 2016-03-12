@@ -11,8 +11,8 @@ class Dimmer : public Actor {
   unsigned char currentValue;
   unsigned char targetValue;
   public:
-    Dimmer(const char* name, const unsigned char pin, Stream& stream) : Actor(name, stream), pin(pin) {};
-    virtual void printStatus();
+    Dimmer(const char* name, const unsigned char pin) : Actor(name), pin(pin) {};
+    virtual void printStatus(Stream& stream);
     virtual void setCommand(const char* const command);
     virtual void execute();
 };

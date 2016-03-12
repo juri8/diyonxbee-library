@@ -1,12 +1,12 @@
 #include "PeriodicSensor.h"
 #include <Arduino.h>
 
-void PeriodicSensor::printStatus() {
+void PeriodicSensor::printStatus(Stream& stream) {
     unsigned long now = millis();
     if(lastUpdate + queryInterval >= now) {
         lastUpdate = now;
-        serial().print(name);
-        serial().print('=');
-        printValue();
+        stream.print(name);
+        stream.print('=');
+        printValue(stream);
     }
 }
