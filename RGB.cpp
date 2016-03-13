@@ -63,5 +63,8 @@ void RGB::execute() {
     if(now - lastUpdate > updateDelay) {
         lastUpdate = now;
         fade(currentValue, targetValue);
+        analogWrite(redPin, currentValue[0]);
+        analogWrite(greenPin, currentValue[1]);
+        analogWrite(bluePin, currentValue[2]);
     }
 }

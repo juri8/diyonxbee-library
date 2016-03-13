@@ -34,6 +34,7 @@ void Dimmer::execute() {
         lastUpdate = now;
         if(currentValue != targetValue) {
             currentValue += getDirection(currentValue, targetValue);
+            analogWrite(pin, currentValue);
         }
     }
 }
