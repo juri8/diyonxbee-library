@@ -3,6 +3,8 @@
 
 #include <Stream.h>
 
+typedef const unsigned char pin_type;
+
 class Sensor {
   private:
   protected:

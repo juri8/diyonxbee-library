@@ -4,16 +4,16 @@
 #include "Actor.h"
 
 class RGB : public Actor {
-  const unsigned char redPin;
-  const unsigned char greenPin;
-  const unsigned char bluePin;
+  pin_type redPin;
+  pin_type greenPin;
+  pin_type bluePin;
   int updateDelay = 20; // milliseconds
   unsigned long lastUpdate = 0;
   unsigned char configuredValue[];
   unsigned char currentValue[];
   unsigned char targetValue[];
   public:
-    RGB(const char* name, const unsigned char red, const unsigned char blue, const unsigned char green) : Actor(name), redPin(red), greenPin(green), bluePin(blue) {};
+    RGB(const char* name, pin_type red, pin_type green, pin_type blue);
     virtual void printStatus(Stream& stream);
     virtual void setCommand(const char* const command);
     virtual void execute();

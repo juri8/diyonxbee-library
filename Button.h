@@ -3,13 +3,12 @@
 
 #include "Sensor.h"
 
-
 class Button : public Sensor {
   private:
-    const unsigned char pin;
-    bool state, lastReport;
+    pin_type pin;
+    bool lastState;
   public:
-    Button(const char* name, const unsigned char pin): Sensor(name), pin(pin), state(false), lastReport(false) {};
+    Button(const char* name, pin_type pin);
     virtual void printStatus(Stream& stream);
 };
 

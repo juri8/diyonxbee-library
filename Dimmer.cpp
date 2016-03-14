@@ -3,6 +3,10 @@
 
 #include "util.h"
 
+Dimmer::Dimmer(const char* name, pin_type pin) : Actor(name), pin(pin) {
+    pinMode(pin, OUTPUT);
+}
+
 void Dimmer::printStatus(Stream& stream) {
     stream.print(name);
     stream.print("=");

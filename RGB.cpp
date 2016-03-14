@@ -3,6 +3,12 @@
 
 #include "util.h"
 
+RGB::RGB(const char* name, pin_type red, pin_type green, pin_type blue) : Actor(name), redPin(red), greenPin(green), bluePin(blue) {
+    pinMode(redPin, OUTPUT);
+    pinMode(greenPin, OUTPUT);
+    pinMode(bluePin, OUTPUT);
+}
+
 void RGB::printStatus(Stream& stream) {
     stream.print(name);
     stream.print("=");

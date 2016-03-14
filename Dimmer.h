@@ -4,14 +4,14 @@
 #include "Actor.h"
 
 class Dimmer : public Actor {
-  const unsigned char pin;
+  pin_type pin;
   unsigned int updateDelay = 20; // milliseconds
   unsigned long lastUpdate = 0;
   unsigned char configuredValue;
   unsigned char currentValue;
   unsigned char targetValue;
   public:
-    Dimmer(const char* name, const unsigned char pin) : Actor(name), pin(pin) {};
+    Dimmer(const char* name, pin_type pin);
     virtual void printStatus(Stream& stream);
     virtual void setCommand(const char* const command);
     virtual void execute();
