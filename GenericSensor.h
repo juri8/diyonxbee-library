@@ -3,11 +3,17 @@
 
 #include "PeriodicSensor.h"
 
+typedef void (*switchfunc)(const bool on);
+typedef void (*readfunc)(Stream& stream);
+
 class GenericSensor : public PeriodicSensor {
   private:
-    void (*function)(Stream& stream);
+    readfunc function;
+    switchfunc switch_function;
     virtual void printValue(Stream& stream) { function(stream); }
+    virtual void turnOn() { switch_function(true); PeriodicSensor::turnOn(); }
+    virtual void turnOff() { switch_function(false); PeriodicSensor::turnOff(); }
   public:
-    GenericSensor(const char* name, const int queryInterval, void (*function)(Stream& stream)) : PeriodicSensor(name, queryInterval), function(function) {}
+    GenericSensor(const char* name, const int queryInterval, readfunc function, const int turnOnTime = 0, switchfunc switch_function = NULL) : PeriodicSensor(name, queryInterval, turnOnTime), function(function), switch_function(switch_function){}
 };
 #endif
