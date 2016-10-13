@@ -7,20 +7,16 @@
 
 class Sensors {
     Stream& stream;
-    Sensor* sensors[];
-    Actor* actors[];
+    Sensor** sensors;
+    Actor** actors;
     void sendUpdates();
     void processCommand(const char* const item, const char* const command);
     void updateSensors();
     int readBlocking();
   public:
-    Sensors(Stream& stream, const int numSensors, const int numActors): stream(stream) {
-        sensors[numSensors];
-        actors[numActors];
+    Sensors(Stream& stream, Sensor** sensors, Actor** actors): stream(stream), sensors(sensors), actors(actors)  {
     }
     void process();
-    void setActor(const int actorNum, Actor* actor) {actors[actorNum] = actor; }
-    void setSensor(const int sensorNum, Sensor* sensor) { sensors[sensorNum] = sensor; }
 };
 
 #endif

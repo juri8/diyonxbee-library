@@ -2,8 +2,8 @@
 #define __util_h_
 #include <Stream.h>
 
-unsigned char readColor(const char* data, const int startIdx);
-int getDirection(const unsigned char currentValue, const unsigned char targetValue);
-void printByte(Stream& stream, const unsigned char byte); 
+unsigned int readColor(const char* data, const int startIdx);
+int getDirection(const unsigned int currentValue, const unsigned int targetValue);
+void printByte(Stream& stream, const unsigned int byte); 
 
 #endif

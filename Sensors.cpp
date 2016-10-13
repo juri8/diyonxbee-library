@@ -4,18 +4,21 @@ const int MAX_COMMAND = 32;
 const int MAX_ITEM = 32;
 
 void Sensors::sendUpdates() {
-    const int numberSensors = sizeof(sensors) / sizeof(Sensor*);
-    for(int i = 0; i < numberSensors; i++) {
+    const unsigned char numSensors = sensors != NULL ? sizeof(sensors) / sizeof(Sensor*) : 0;
+    for(unsigned char i = 0; i < numSensors; i++) {
         sensors[i]->printStatus(stream);
     }
 }
 
 void Sensors::processCommand(const char* const item, const char* const command) {
-    const int count = sizeof(actors) / sizeof(Actor*);
-    for(int i = 0; i < count; i++) {
+    const unsigned char numActors = actors != NULL ? sizeof(actors) / sizeof(Actor*) : 0;
+    for(unsigned char i = 0; i < numActors; i++) {
         if(strncmp(item, actors[i]->getName(), MAX_ITEM) == 0) {
+//            stream.print("updating actor ");
+//            stream.println(actors[i]->getName());
             actors[i]->setCommand(command);
             actors[i]->printStatus(stream);
+            break;
         }
     }
 }
@@ -44,6 +47,7 @@ void Sensors::process() {
             break;
           }
         }
+        //stream.println(item);
 
         char command[MAX_COMMAND];
         memset(command, '\0', sizeof(command));    
@@ -54,6 +58,7 @@ void Sensors::process() {
             break;
           }
         }
+        //stream.println(command);
 
         processCommand(item, command);
     }

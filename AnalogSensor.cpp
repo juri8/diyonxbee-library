@@ -6,5 +6,9 @@ AnalogSensor::AnalogSensor(const char* name, const int pin, const int queryInter
 
 void AnalogSensor::printValue(Stream& stream) {
     int value = analogRead(pin);
-    stream.println(value);
+    value += analogRead(pin);
+    value += analogRead(pin);
+    value += analogRead(pin);
+
+    stream.println(value>>2);
 }
