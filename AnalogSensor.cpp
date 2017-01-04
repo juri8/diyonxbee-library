@@ -1,14 +1,11 @@
 #include "AnalogSensor.h"
 #include <Arduino.h>
+#include "util.h"
 
-AnalogSensor::AnalogSensor(const char* name, const int pin, const int queryInterval) : PeriodicSensor(name, queryInterval), pin(pin) {
+AnalogSensor::AnalogSensor(const char* name, const int pin, const int queryInterval) : PeriodicSensor(name, queryInterval, 0), pin(pin) {
 }
 
 void AnalogSensor::printValue(Stream& stream) {
-    int value = analogRead(pin);
-    value += analogRead(pin);
-    value += analogRead(pin);
-    value += analogRead(pin);
-
-    stream.println(value>>2);
+    int value = analogReadAverage(pin);
+    stream.println(value);
 }
