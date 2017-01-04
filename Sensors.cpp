@@ -1,10 +1,10 @@
 #include "Sensors.h"
+#include "Arduino.h"
 
 const int MAX_COMMAND = 32;
 const int MAX_ITEM = 32;
 
 void Sensors::sendUpdates() {
-    const unsigned char numSensors = sensors != NULL ? sizeof(sensors) / sizeof(Sensor*) : 0;
     for(unsigned char i = 0; i < numSensors; i++) {
         sensors[i]->printStatus(stream);
     }

@@ -14,6 +14,6 @@ class GenericSensor : public PeriodicSensor {
     virtual void turnOn() { switch_function(true); PeriodicSensor::turnOn(); }
     virtual void turnOff() { switch_function(false); PeriodicSensor::turnOff(); }
   public:
-    GenericSensor(const char* name, const int queryInterval, readfunc function, const int turnOnTime = 0, switchfunc switch_function = NULL) : PeriodicSensor(name, queryInterval, turnOnTime), function(function), switch_function(switch_function){}
+    GenericSensor(const char* name, const unsigned int queryInterval, readfunc function, const unsigned long turnOnTime = 0, switchfunc switch_function = NULL) : PeriodicSensor(name, queryInterval, turnOnTime), function(function), switch_function(switch_function) { }
 };
 #endif
