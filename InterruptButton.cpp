@@ -13,7 +13,7 @@ void InterruptButton::printStatus(Stream& stream) {
     if(state != lastState) {
         stream.print(name);
         stream.print('=');
-        stream.print(state ? "ON" : "OFF");
+        stream.println(state ? "ON" : "OFF");
         lastState = state;
     }
 }
