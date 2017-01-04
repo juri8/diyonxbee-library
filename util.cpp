@@ -18,3 +18,11 @@ void printByte(Stream& stream, const unsigned int byte) {
         stream.print(byte);
 }
 
+int analogReadAverage(const unsigned char pin) {
+    int val = analogRead(pin);
+    val += analogRead(pin);
+    val += analogRead(pin);
+    val += analogRead(pin);
+    val = val >> 2;
+    return val;
+}
