@@ -11,11 +11,8 @@ void Sensors::sendUpdates() {
 }
 
 void Sensors::processCommand(const char* const item, const char* const command) {
-    const unsigned char numActors = actors != NULL ? sizeof(actors) / sizeof(Actor*) : 0;
     for(unsigned char i = 0; i < numActors; i++) {
         if(strncmp(item, actors[i]->getName(), MAX_ITEM) == 0) {
-//            stream.print("updating actor ");
-//            stream.println(actors[i]->getName());
             actors[i]->setCommand(command);
             actors[i]->printStatus(stream);
             break;
@@ -24,8 +21,7 @@ void Sensors::processCommand(const char* const item, const char* const command) 
 }
 
 void Sensors::updateSensors() {
-    const int count = sizeof(actors) / sizeof(Actor*);
-    for(int i = 0; i < count; i++) {
+    for(int i = 0; i < numActors; i++) {
         actors[i]->execute();
     }
 }
