@@ -14,6 +14,7 @@ class PeriodicSensor : public Sensor {
     virtual void turnOn() { isOn = true; };
     virtual void turnOff() { isOn = false; };
     PeriodicSensor(const char* name, const unsigned int queryInterval, const unsigned long aturnOnTime) : Sensor(name), queryInterval(queryInterval), turnOnTime(aturnOnTime) {}
+    void printStatus0(Stream& stream);
   public:
     virtual void printStatus(Stream& stream);
 };
