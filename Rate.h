@@ -1,5 +1,5 @@
-#ifndef __InterruptButton_h_
-#define __InterruptButton_h_
+#ifndef __Rate_h_
+#define __Rate_h_
 
 #include "Sensor.h"
 #include <Arduino.h>
